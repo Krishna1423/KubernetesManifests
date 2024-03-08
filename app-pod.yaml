@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-v1
+  labels:
+    app: employees
+spec:
+  containers:
+    - image: 848224205131.dkr.ecr.us-east-1.amazonaws.com/assignment1-repo:app_0.1
+      name: app
+      env:
+        - name: DBPORT
+          value: "3306"
+        - name: DBHOST
+          value: mysql
+        - name: DBUSER
+          value: root
+        - name: DATABASE
+          value: employees
+        - name: DBPWD
+          value: pw
+        - name: APP_COLOR
+          value: blue
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+  imagePullSecrets:
+    - name: ecr-secret
