@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: app-replicaset
+  namespace: application
   labels:
     app: employees
 spec:
