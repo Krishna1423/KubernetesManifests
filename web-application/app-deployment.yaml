@@ -2,26 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: app-deployment
-  labels:
-    app: employees
+  namespace: application
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: employees
+  replicas: 3
   template:
      metadata:
        labels:
          app: employees
      spec:
        containers:
-         - image: 848224205131.dkr.ecr.us-east-1.amazonaws.com/assignment1-repo:app_0.1
+         - image: 848224205131.dkr.ecr.us-east-1.amazonaws.com/assignment1-repo:app_1.1
            name: app
            env:
              - name: DBPORT
                value: "3306"
              - name: DBHOST
-               value: mysql
+               value: mysql.database.svc.cluster.local
              - name: DBUSER
                value: root
              - name: DATABASE

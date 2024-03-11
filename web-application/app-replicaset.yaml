@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: app-replicaset
+  namespace: application
   labels:
     app: employees
 spec:
@@ -21,7 +22,7 @@ spec:
             - name: DBPORT
               value: "3306"
             - name: DBHOST
-              value: mysql
+              value: mysql.database.svc.cluster.local
             - name: DBUSER
               value: root
             - name: DATABASE

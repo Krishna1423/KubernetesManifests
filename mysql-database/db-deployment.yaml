@@ -2,8 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db-deployment
-  labels:
-    app: mysql
+  namespace: database
 spec:
   replicas: 3
   selector:
@@ -20,5 +19,3 @@ spec:
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: pw
-      imagePullSecrets:
-        - name: ecr-secret
